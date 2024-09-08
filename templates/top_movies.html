@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Películas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Top 10 Películas</h1>
+        <div class="movie-list">
+            {% for movie in movies %}
+                <div class="movie-item">
+                    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }} Poster">
+                    <div class="movie-details">
+                        <h3>{{ movie.title }}</h3>
+                        <p class="release-date">Fecha de lanzamiento: {{ movie.release_date }}</p>
+                        <p class="rating">Rating: {{ movie.rating }}</p>
+                        <p class="genres">Géneros: {{ movie.genres | join(', ') }}</p>
+                        <p>Votos: {{ movie.vote_count }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="back-button" href="/">Volver a buscar</a>
+    </div>
+</body>
+</html>

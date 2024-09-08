@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Película</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="movie-item">
+            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }} Poster">
+            <div class="movie-details">
+                <h3>{{ movie.title }}</h3>
+                <p>{{ movie.overview }}</p>
+                <p class="rating">Rating: {{ movie.vote_average }}</p>
+            </div>
+        </div>
+        <form action="/vote" method="post">
+            <input type="hidden" name="movie_id" value="{{ movie.id }}">
+            <button type="submit">Me gusta</button>
+        </form>
+        <a class="back-button" href="/">Volver a buscar</a>
+    </div>
+</body>
+</html>
+

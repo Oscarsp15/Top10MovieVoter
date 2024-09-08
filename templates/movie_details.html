@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="movie-detail-container">
+        <div class="movie-poster">
+            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+        </div>
+        <div class="movie-info">
+            <h1>{{ movie.title }} ({{ movie.release_date }})</h1>
+            <p><strong>Duración:</strong> {{ movie['runtime'] }} minutos</p>
+            <p><strong>Géneros:</strong> {{ genre_names }}</p>
+            <p><strong>Resumen:</strong> {{ movie.overview }}</p>
+            <p><strong>Votos:</strong> {{ movie.vote_count }}</p>
+            <form action="/vote" method="post">
+                <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                <button type="submit">Votar por esta película</button>
+            </form>
+        </div>
+    </div>
+    <a class="back-button" href="/">Volver a buscar</a>
+</body>
+</html>

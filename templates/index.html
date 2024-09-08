@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 10 Películas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Explora las Mejores Películas</h1>
+        <form action="/search" method="get">
+            <input type="text" name="movie" placeholder="Buscar película" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+    <div class="container">
+        {% for movie in movies %}
+            <div class="movie-item">
+                <a href="/movie/{{ movie.id }}">
+                    <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }} Poster">
+                    <div class="movie-details">
+                        <h3>{{ movie.title }}</h3>
+                        <p class="release-date">{{ movie.release_date }}</p>
+                        <p class="rating">{{ movie.rating }}</p>
+                        <p class="votes">Votos: {{ movie.vote_count }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
