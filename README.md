@@ -21,7 +21,7 @@ El **Movie Voting System** es una aplicación web que permite a los usuarios bus
 ### Clonación del Repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/Top10MovieVoter.git
+git clone https://github.com/Oscarsp15/Top10MovieVoter.git
 cd Top10MovieVoter
 pip install -r requirements.txt
 ```
